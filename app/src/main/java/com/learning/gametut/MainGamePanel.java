@@ -153,7 +153,7 @@ public class MainGamePanel extends SurfaceView implements
                     player.setLeft(true);
                     player.setRight(false);
                     player.setIdle(false);
-                    gv_action = true;
+                    //gv_action = true;
                 } else if (Math.abs(deltaX) > MIN_DISTANCE && deltaX > 0) {
                     System.out.println("Right");
                     player.setLeft(false);

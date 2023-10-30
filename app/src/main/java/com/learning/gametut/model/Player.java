@@ -52,7 +52,7 @@ public class Player extends MapObject {
         stopSpeed = 0.1;
         gravity = 0.25;*/
         moveSpeed = 0.3;
-        maxSpeed = 1.2;
+        maxSpeed = 3;
         maxFallSpeed = 6;
         stopSpeed = 0.1;
         jumpStart = -6.30;
@@ -78,7 +78,7 @@ public class Player extends MapObject {
     }
 
     private void move() {
-        /*if (left) {
+        if (left) {
             facingLeft = true;
             dx -= moveSpeed;
             if (dx < -maxSpeed)
@@ -86,15 +86,6 @@ public class Player extends MapObject {
         }
         if (right) {
             facingLeft = false;
-            dx += moveSpeed;
-            if (dx > maxSpeed)
-                dx = maxSpeed;
-        }*/
-        if (left) {
-            dx -= moveSpeed;
-            if (dx < -maxSpeed)
-                dx = -maxSpeed;
-        } else if (right) {
             dx += moveSpeed;
             if (dx > maxSpeed)
                 dx = maxSpeed;
@@ -110,7 +101,8 @@ public class Player extends MapObject {
                 }
             }
         }
-        /*if (jumping && !falling) {
+
+        if (jumping && !falling) {
             dy = jumpStart;
             falling = true;
             jumping = false;
@@ -122,7 +114,8 @@ public class Player extends MapObject {
                 dy = maxFallSpeed;
         } else {
             dy = 0;
-        }*/
+        }
+
         if (jumping) {
             y = y - currentJumpSpeed;
             currentJumpSpeed -= 0.1;
@@ -132,7 +125,7 @@ public class Player extends MapObject {
                 falling = true;
             }
         }
-        if (falling) {
+        if (falling ) {
             if (currentFallSpeed >= 4) {
                 falling = false;
                 if (!left && !right)
@@ -151,6 +144,7 @@ public class Player extends MapObject {
             left = false;
             right = false;
         }
+
         if (left || right) {
             x = x + dx;
             if (x <= 0)
@@ -158,6 +152,7 @@ public class Player extends MapObject {
             if (x > gv_locX)
                 x = 0;
         }
+        //System.out.println("*X = "+x + " Y = "+y);
     }
 
     public void update() {
